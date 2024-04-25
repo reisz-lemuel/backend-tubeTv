@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { Advertisement } from '../models/advertisement';
 import { body, validationResult } from 'express-validator';
+import connection from '..';
 
 const router = Router();
 let advertisements: Advertisement[] = [];
@@ -23,6 +24,8 @@ router.post('/', advertisementValidationRules, (req: Request, res: Response) => 
     description: req.body.description,
     image: req.body.image
   };
+
+
 
   advertisements.push(task);
   res.status(201).json(task)
@@ -60,7 +63,7 @@ router.post('/', (req: Request, res: Response) => {
   res.status(201).json(newAdvertisement);
 });
 //read all advertisement
-router.get('/', (req: Request, res: Response) => {
+router.get('/sample', (req: Request, res: Response) => {
   res.json(advertisements)
 });
 //read a single advertisement
