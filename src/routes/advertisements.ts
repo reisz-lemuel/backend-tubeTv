@@ -59,6 +59,17 @@ router.get('/', (req: Request, res: Response) => {
 
   });
 });
+router.get('/:id', (req: Request, res: Response) => {
+  const {id} = req.params
+
+  connection.query(`SELECT * FROM advertisement WHERE id = ${id}`, (err:any, rows:any[], fields:any)=>{
+
+
+    if(err) throw err
+    res.json(rows)
+
+  });
+}); 
 
 
 
